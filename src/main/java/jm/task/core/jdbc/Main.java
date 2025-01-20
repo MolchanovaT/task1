@@ -1,6 +1,7 @@
 package jm.task.core.jdbc;
 
 import jm.task.core.jdbc.dao.UserDao;
+import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
 import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
@@ -9,14 +10,14 @@ import java.sql.Connection;
 
 public class Main {
     public static void main(String[] args) {
-        Connection connection = Util.getConnection();
-        if (connection != null) {
-            System.out.println("Успешное соединение с базой данных");
-        } else {
-            System.out.println("Не удалось подключиться к базе данных");
-        }
+//        Connection connection = Util.getConnection();
+//        if (connection != null) {
+//            System.out.println("Успешное соединение с базой данных");
+//        } else {
+//            System.out.println("Не удалось подключиться к базе данных");
+//        }
 
-        UserDao userDao = new UserDaoJDBCImpl();
+        UserDao userDao = new UserDaoHibernateImpl();
 
         userDao.createUsersTable();
         System.out.println("Таблица пользователей создана");
