@@ -79,7 +79,7 @@ public class UserDaoHibernateImpl implements UserDao {
     public void cleanUsersTable() {
         try (Session session = Util.getSessionFactory().getCurrentSession()) {
             Transaction transaction = session.beginTransaction();
-            Query<User> query = session.createQuery("from User", User.class);
+            Query query = session.createQuery("DELETE FROM User");
             query.executeUpdate();
             transaction.commit();
         } catch (Exception e) {
