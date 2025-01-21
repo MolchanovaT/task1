@@ -17,9 +17,9 @@ public class UserDaoHibernateImpl implements UserDao {
             transaction = session.beginTransaction();
             session.createSQLQuery("CREATE TABLE IF NOT EXISTS users (" +
                     "id SERIAL PRIMARY KEY, " +
-                    "name VARCHAR(50), " +
-                    "lastName VARCHAR(50), " +
-                    "age SMALLINT)").executeUpdate();
+                    "name VARCHAR(50) NOT NULL, " +
+                    "lastName VARCHAR(50) NOT NULL, " +
+                    "age SMALLINT NOT NULL)").executeUpdate();
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) transaction.rollback();
